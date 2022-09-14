@@ -1,4 +1,56 @@
 .wrapper {
     width: 356px;
     position: fixed;
+    min-height: 100%;
+    padding: 20px 0 26px;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    margin-bottom: 8px;
+
+    a {
+        color: rgba(22, 24, 35, 1);
+        display: flex;
+        align-items: center;
+        padding: 8px;
+        border-radius: 4px;
+
+        svg {
+            margin-right: 8px;
+        }
+
+        &:hover {
+            background: rgba(22, 24, 35, 0.03);
+        }
+    }
+}
+
+.suggested,
+.following {
+    font-weight: 500;
+    padding: 16px 0;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        top: 0;
+        height: 1px;
+        background: rgba(22, 24, 35, 0.08);
+    }
+
+    .title {
+        font-size: 14px;
+        line-height: 20px;
+        padding: 0 8px;
+        color: rgba(22, 24, 35, 0.75);
+        margin-bottom: 8px;
+    }
 }

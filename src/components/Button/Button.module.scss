@@ -1,11 +1,15 @@
 .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.6rem;
-    font-weight: 600;
+    font-weight: 500;
     font-style: normal;
     line-height: 22px;
     min-height: 36px;
     min-width: 110px;
     padding: 0 16px;
+    color: var(--black);
     background-color: var(--white);
     border: 1px solid rgba(22, 24, 35, 0.12);
     padding: 0 16px;
@@ -29,6 +33,7 @@
     border-radius: 4px;
     background-color: var(--primary);
     color: var(--white);
+    border: none;
 
     &:hover {
         background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)), #fe2c55;

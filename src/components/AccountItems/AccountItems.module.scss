@@ -3,6 +3,34 @@
     display: flex;
     cursor: pointer;
 
+    &.sidebar {
+        padding: 8px;
+        border-radius: 4px;
+
+        img {
+            width: 32px;
+            height: 32px;
+        }
+
+        .info {
+            height: 32px;
+        }
+
+        .verified {
+            width: 14px;
+            height: 14px;
+        }
+
+        .username {
+            margin-top: -4px;
+        }
+
+        .name {
+            font-size: 1.2rem;
+            line-height: 15px;
+        }
+    }
+
     &:hover {
         background: rgba(22, 24, 35, 0.03);
     }

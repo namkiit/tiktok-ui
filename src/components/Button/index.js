@@ -36,7 +36,7 @@ function Button({ to, href, primary = false, outline = false, disabled = false, 
 
     return (
         <Component className={classes} {...props}>
-            <span>{children}</span>
+            <>{children}</>
         </Component>
     )
 }
