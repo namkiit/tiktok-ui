@@ -13,6 +13,7 @@ const PublicRoutes = [
     { path: '/following', component: Following },
     { path: '/live', component: Live },
     { path: '/profile', component: Profile },
+    { path: '/@:nickname', component: Profile },
     { path: '/upload', component: Upload, layout: HeaderOnly },
     { path: '/setting', component: Setting },
     { path: '/feedback', component: Feedback, layout: HeaderOnly }

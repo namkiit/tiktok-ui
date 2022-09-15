@@ -38,7 +38,7 @@ export const ForYouIcon = ({ className, width = '3.2rem', height = '3.2rem' }) =
         width={width}
         height={height}
         viewBox="0 0 48 48"
-        fill="rgba(22, 24, 35, 1.0)"
+        fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
     >
         <path
@@ -55,7 +55,7 @@ export const FollowingIcon = ({ className, width = '3.2rem', height = '3.2rem' }
         width={width}
         height={height}
         viewBox="0 0 48 48"
-        fill="rgba(22, 24, 35, 1.0)"
+        fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
     >
         <path
@@ -82,7 +82,7 @@ export const LiveIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => 
         width={width}
         height={height}
         viewBox="0 0 32 32"
-        fill="rgba(22, 24, 35, 1.0)"
+        fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
     >
         <path

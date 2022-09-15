@@ -18,4 +18,4 @@ function HeaderOnly({ children }) {
     );
 }
 
-export default HeaderOnly;
+export default HeaderOnly
