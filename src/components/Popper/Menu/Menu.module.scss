@@ -8,6 +8,12 @@
 
     .more-list {
         padding-bottom: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .list-body {
+        overflow-y: auto;
     }
 
     .more-item {

@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind'
 import { Link } from 'react-router-dom'
 
+import config from '~/config'
 import { FollowingIcon, ForYouIcon, LiveIcon } from '~/components/Icons'
 import styles from './Sidebar.module.scss'
 import AccountItems from '~/components/AccountItems'
@@ -12,9 +13,9 @@ function Sidebar() {
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('tabs')}>
-                    <Link to="/"><ForYouIcon /> For You</Link>
-                    <Link to="/following"><FollowingIcon /> Following</Link>
-                    <Link to="/live"><LiveIcon /> LIVE</Link>
+                    <Link to={config.routes.home}><ForYouIcon /> For You</Link>
+                    <Link to={config.routes.following}><FollowingIcon /> Following</Link>
+                    <Link to={config.routes.live}><LiveIcon /> LIVE</Link>
                 </div>
 
                 <div className={cx('suggested')}>

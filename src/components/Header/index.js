@@ -1,14 +1,16 @@
 import classNames from 'classnames/bind'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
+import { Link } from 'react-router-dom'
 
+import config from '~/config'
 import styles from './Header.module.scss'
 import images from '~/assets/images'
 import Button from '~/components/Button'
 import Menu from '~/components/Popper/Menu'
 import { InboxIcon, MessageIcon } from '~/components/Icons'
 import Image from '~/components/Image'
-import Search from '~/components/Layouts/components/Search'
+import Search from '~/components/Search'
 
 const cx = classNames.bind(styles)
 
@@ -22,6 +24,62 @@ const MENU_ITEMS = [
                 {
                     code: 'en',
                     title: 'English'
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    code: 'vi',
+                    title: 'Tiếng Việt',
                 },
                 {
                     code: 'vi',
@@ -53,17 +111,17 @@ function Header() {
         {
             icon: <img src={images.profileIcon} alt="" />,
             title: 'Profile',
-            to: '/profile'
+            to: config.routes.profile
         },
         {
             icon: <img src={images.coinsIcon} alt="" />,
             title: 'Get coins',
-            to: '/coin'
+            to: config.routes.coin
         },
         {
             icon: <img src={images.settingIcon} alt="" />,
             title: 'Settings',
-            to: '/setting'
+            to: config.routes.setting
         },
         ...MENU_ITEMS,
         {
@@ -76,15 +134,13 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <a href="/" className={cx('logo')}>
-                    <img src={images.logo} alt="TikTok" />
-                </a>
+                <Link to={config.routes.home} className={cx('logo')}><img src={images.logo} alt="TikTok" /></Link>
 
-                <Search />
+                <div><Search /></div>
 
                 <div className={cx('actions')}>
 
-                    <Button to="/upload"><img className={cx('upload-icon')} src={images.plusIcon} alt="" /> Upload</Button>
+                    <Button to={config.routes.upload}><img className={cx('upload-icon')} src={images.plusIcon} alt="" /> Upload</Button>
 
                     {currentUser ? (
                         <>

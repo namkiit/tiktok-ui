@@ -5,7 +5,7 @@ import classNames from 'classnames/bind'
 import HeadlessTippy from '@tippyjs/react/headless'
 
 import { useDebounce } from '~/hooks'
-import * as searchServices from '~/apiServices/searchServices'
+import * as searchService from '~/services/searchService'
 import styles from './Search.module.scss'
 import Popper from '~/components/Popper'
 import AccountItems from '~/components/AccountItems'
@@ -18,6 +18,8 @@ function Search() {
     const [showResults, setShowResults] = useState(true)
     const [loading, setLoading] = useState(false)
 
+    const inputRef = useRef()
+
     const debounce = useDebounce(searchValue, 500)
 
     useEffect(() => {
@@ -29,7 +31,7 @@ function Search() {
         const fetchAPI = async () => {
             setLoading(true)
 
-            const result = await searchServices.search(debounce)
+            const result = await searchService.search(debounce)
             setSearchResults(result)
 
             setLoading(false)
@@ -39,7 +41,12 @@ function Search() {
 
     }, [debounce])
 
-    const inputRef = useRef()
+    const handleInputChange = (e) => {
+        let value = e.target.value
+        if (value.trim() === '') value = ''
+
+        setSearchValue(value)
+    }
 
     const handleClearSearch = () => {
         setSearchValue('')
@@ -51,13 +58,9 @@ function Search() {
         setShowResults(false)
     }
 
-    const handleInputChange = (e) => {
-        let value = e.target.value
-        if (value.trim() === '') value = ''
-
-        setSearchValue(value)
+    const handleSubmit = (e) => {
+        e.preventDefault()
     }
-
 
     return (
         <HeadlessTippy
@@ -79,7 +82,7 @@ function Search() {
                 <input
                     placeholder="Search for accounts and videos"
                     value={searchValue} ref={inputRef}
-                    onChange={e => handleInputChange(e)}
+                    onChange={handleInputChange}
                     onFocus={() => setShowResults(true)}
                 />
 
@@ -92,7 +95,7 @@ function Search() {
 
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onClick={handleSubmit} onMouseDown={e => e.preventDefault()}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>
             </div>
