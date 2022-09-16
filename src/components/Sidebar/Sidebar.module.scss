@@ -1,8 +1,12 @@
 .wrapper {
     width: 356px;
     position: fixed;
+    top: 0;
+    bottom: 0;
+    margin-top: var(--default-layout-header-height);
     min-height: 100%;
-    padding: 20px 0 26px;
+    padding: 20px 0 80px 0;
+    overflow-y: scroll;
 }
 
 .tabs {
@@ -31,7 +35,9 @@
 }
 
 .suggested,
-.following {
+.following,
+.discover,
+.footer {
     font-weight: 500;
     padding: 16px 0;
     position: relative;
@@ -52,5 +58,90 @@
         padding: 0 8px;
         color: rgba(22, 24, 35, 0.75);
         margin-bottom: 8px;
+    }
+
+    .see-all {
+        display: flex;
+        flex-direction: row;
+        -webkit-box-align: center;
+        align-items: center;
+        padding: 0px 8px;
+        margin-top: 8px;
+        cursor: pointer;
+        font-size: 1.4rem;
+        color: var(--primary);
+    }
+}
+
+.discover {
+    padding-bottom: 8px;
+
+    .discover-list {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        padding-left: 8px;
+    }
+
+    .hashtag {
+        display: flex;
+        box-sizing: border-box;
+        width: fit-content;
+        max-width: 100%;
+        height: 24px;
+        margin-bottom: 12px;
+        padding: 3px 10px;
+        border: 1px solid rgba(22, 24, 35, 0.2);
+        border-radius: 12px;
+        background: rgb(255, 255, 255);
+        margin-right: 8px;
+        color: rgba(22, 24, 35, 0.75);
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        overflow: hidden;
+
+        &:hover {
+            background: rgba(22, 24, 35, 0.03);
+            cursor: pointer;
+        }
+
+        img {
+            margin-right: 6px;
+        }
+
+        .text {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    }
+}
+
+.footer {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 17px;
+    padding-left: 8px;
+
+    .links-1,
+    .links-2,
+    .links-3 {
+        margin-bottom: 8px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+
+        a {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    a,
+    span {
+        color: rgba(22, 24, 35, 0.5);
+        margin-right: 6px;
     }
 }

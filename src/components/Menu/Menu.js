@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind'
 import Tippy from '@tippyjs/react/headless'
+import PropTypes from 'prop-types'
 
 import styles from './Menu.module.scss'
 import Popper from '~/components/Popper'
@@ -12,7 +13,7 @@ const defaultFn = () => {
 
 }
 
-function Menu({ children, items, onChange = defaultFn }) {
+function Menu({ children, items = [], onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }])
     const currentMenu = history[history.length - 1]
 
@@ -22,7 +23,8 @@ function Menu({ children, items, onChange = defaultFn }) {
 
             return <MenuItem key={index} data={item} onClick={() => {
                 if (isSubMenu) {
-                    setHistory(prev => [...prev, item.subMenu])
+                    setHistory(prev => [...prev, item.subMenu]) //switch to next page if children has submenu
+                    document.body.classList.add(cx('lock-scroll'))
                 } else {
                     onChange(item)
                 }
@@ -30,6 +32,17 @@ function Menu({ children, items, onChange = defaultFn }) {
         })
     }
 
+    const handleResetMenu = () => {  //reset to first page
+        setHistory(prev => prev.slice(0, 1))
+        document.body.classList.remove(cx('lock-scroll'))
+    }
+
+    const handleBackMenu = () => {
+        setHistory(prev => prev.slice(0, history.length - 1))
+        if (history.length < 3) {
+            document.body.classList.remove(cx('lock-scroll'))
+        }
+    }
 
     return (
         <Tippy
@@ -41,20 +54,22 @@ function Menu({ children, items, onChange = defaultFn }) {
             render={attrs => (
                 <div className={cx('more-tab')} tabIndex="-1" {...attrs}>
                     <Popper className={cx('more-list')}>
-                        {history.length > 1 && <MenuHeader title={currentMenu.title} onBack={() => {
-                            setHistory(prev => prev.slice(0, history.length - 1))
-                        }} />}
+                        {history.length > 1 && <MenuHeader title={currentMenu.title} onBack={handleBackMenu} />}
                         <div className={cx('list-body')}>{renderItems()}</div>
                     </Popper>
                 </div>
             )}
-            onHide={() => {
-                setHistory(prev => prev.slice(0, 1))
-            }}
+            onHide={handleResetMenu}
         >
             {children}
         </Tippy>
     )
+}
+
+Menu.propTypes = {
+    children: PropTypes.node.isRequired,
+    items: PropTypes.array,
+    onChange: PropTypes.func,
 }
 
 export default Menu

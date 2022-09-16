@@ -10,6 +10,8 @@ const images = {
     profileIcon: require('~/assets/images/profileicon.svg').default,
     settingIcon: require('~/assets/images/settingicon.svg').default,
     logoutIcon: require('~/assets/images/logouticon.svg').default,
+    hashtag: require('~/assets/images/hashtag.svg').default,
+    musicIcon: require('~/assets/images/musicicon.svg').default
 }
 
 export default images
