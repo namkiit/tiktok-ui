@@ -15,6 +15,7 @@
     padding: 0 16px;
     border-radius: 2px;
     user-select: none;
+    cursor: pointer;
 
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
@@ -54,5 +55,12 @@
     }
 }
 
-.bigoutline {
+.rounded {
+    min-width: 30px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: rgba(22, 24, 35, 0.06);
+    padding: 0;
+    border: none;
 }

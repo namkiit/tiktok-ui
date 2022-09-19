@@ -1,43 +1,84 @@
 import classNames from 'classnames/bind'
-import { Link } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCopyright } from '@fortawesome/free-regular-svg-icons'
 
 import config from '~/config'
-import { FollowingIcon, ForYouIcon, LiveIcon } from '~/components/Icons'
+import { GroupUserActiveIcon, GroupUserIcon, HomeActiveIcon, HomeIcon, LiveActiveIcon, LiveIcon } from '~/components/Icons'
 import styles from './Sidebar.module.scss'
 import images from '~/assets/images'
-import AccountItems from '~/components/AccountItems/'
+import SuggestedAccounts from '~/components/SuggestedAccounts'
+import Button from '~/components/Button'
 
 const cx = classNames.bind(styles)
 
 function Sidebar() {
+    const currentUser = false
+
+    const currentYear = new Date().getFullYear()
+
+    const [suggests, setSuggests] = useState([])
+    const [seeAll, setSeeAll] = useState(false)
+
+    useEffect(() => {
+        if (seeAll) {
+            fetch('https://tiktok.fullstack.edu.vn/api/users/suggested?page=1&per_page=16')
+                .then(response => response.json())
+                .then(response => setSuggests(response.data))
+                .catch(err => console.error(err))
+        }
+
+        else {
+            fetch('https://tiktok.fullstack.edu.vn/api/users/suggested?page=1&per_page=5')
+                .then(response => response.json())
+                .then(response => setSuggests(response.data))
+                .catch(err => console.error(err))
+        }
+    }, [seeAll])
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('tabs')}>
-                    <Link to={config.routes.home}><ForYouIcon /> For You</Link>
-                    <Link to={config.routes.following}><FollowingIcon /> Following</Link>
-                    <Link to={config.routes.live}><LiveIcon /> LIVE</Link>
+                    <NavLink to={config.routes.home} className={(nav) => cx('tab-item', { active: nav.isActive })}>
+                        <HomeIcon className={cx('icon')} /> <HomeActiveIcon className={cx('active-icon')} /> For You
+                    </NavLink>
+
+                    <NavLink to={config.routes.following} className={(nav) => cx('tab-item', { active: nav.isActive })}>
+                        <GroupUserIcon className={cx('icon')} /> <GroupUserActiveIcon className={cx('active-icon')} /> Following
+                    </NavLink>
+
+                    <NavLink to={config.routes.live} className={(nav) => cx('tab-item', { active: nav.isActive })}>
+                        <LiveIcon className={cx('icon')} /> <LiveActiveIcon className={cx('active-icon')} /> LIVE
+                    </NavLink>
                 </div>
+
+                {!currentUser && <div className={cx('login')}>
+                    <div className={cx('detail')}>
+                        <p>Log in to follow creators, like videos, and view comments.</p>
+                        <Button outline>Log in</Button>
+                    </div>
+                </div>}
 
                 <div className={cx('suggested')}>
                     <p className={cx('title')}>Suggested accounts</p>
-                    <AccountItems sidebar />
-                    <AccountItems sidebar />
-                    <AccountItems sidebar />
-                    <AccountItems sidebar />
+                    {suggests.map((suggest) => {
+                        return <SuggestedAccounts key={suggest.id} data={suggest} />
+                    })}
 
-                    <div className={cx('see-all')}>See all</div>
+                    {seeAll ? <div className={cx('see-all')} onClick={() => setSeeAll(false)}>See less</div> : <div className={cx('see-all')} onClick={() => setSeeAll(true)}>See all</div>}
                 </div>
 
-                <div className={cx('following')}>
+                {currentUser && <div className={cx('following')}>
                     <p className={cx('title')}>Following accounts</p>
-                    <AccountItems sidebar />
-                    <AccountItems sidebar />
-                    <AccountItems sidebar />
-                    <AccountItems sidebar />
+                    <SuggestedAccounts />
+                    <SuggestedAccounts />
+                    <SuggestedAccounts />
+                    <SuggestedAccounts />
 
                     <div className={cx('see-all')}>See more</div>
-                </div>
+                </div>}
 
                 <div className={cx('discover')}>
                     <p className={cx('title')}>Discover</p>
@@ -88,7 +129,7 @@ function Sidebar() {
                         <Link to="/">Community Guidelines</Link>
                     </div>
 
-                    <span className={cx('copyright')}>2022 TikTok</span>
+                    <span className={cx('copyright')}><FontAwesomeIcon icon={faCopyright} /> <p>{currentYear} TikTok</p></span>
                 </div>
             </div>
         </div>

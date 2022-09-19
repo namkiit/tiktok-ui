@@ -4,12 +4,12 @@ import classNames from 'classnames/bind'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import styles from './AccountItems.module.scss'
+import styles from './SuggestedAccounts.module.scss'
 import Image from '~/components/Image'
 
 const cx = classNames.bind(styles)
 
-function AccountItems({ sidebar, data, ...passProps }) {
+function SuggestedAccounts({ sidebar, data, ...passProps }) {
     return (
         <Link to={`/@${data?.nickname}`} className={cx('wrapper', { sidebar })} {...passProps}>
             <Image
@@ -29,8 +29,8 @@ function AccountItems({ sidebar, data, ...passProps }) {
     )
 }
 
-AccountItems.propTypes = {
+SuggestedAccounts.propTypes = {
     data: PropTypes.object.isRequired,
 }
 
-export default AccountItems
+export default SuggestedAccounts

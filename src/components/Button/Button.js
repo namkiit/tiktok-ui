@@ -6,11 +6,12 @@ import styles from './Button.module.scss'
 
 const cx = classNames.bind(styles)
 
-function Button({ to, href, primary = false, outline = false, disabled = false, children, onClick, ...restProps }) {
+function Button({ to, href, primary = false, outline = false, rounded = false, disabled = false, children, onClick, ...restProps }) {
     let Component = 'button'
     const classes = cx('wrapper', {
         primary,
         outline,
+        rounded,
         disabled,
     })
 
@@ -49,6 +50,7 @@ Button.propTypes = {
     href: PropTypes.string,
     primary: PropTypes.bool,
     outline: PropTypes.bool,
+    rounded: PropTypes.bool,
     disabled: PropTypes.bool,
     onClick: PropTypes.func,
 }
