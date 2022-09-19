@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/tiktok-ui/static/css/main.750aae1a.css",
+    "main.js": "/tiktok-ui/static/js/main.e323ddb4.js",
+    "static/js/787.4c9d15e8.chunk.js": "/tiktok-ui/static/js/787.4c9d15e8.chunk.js",
+    "static/media/logo.svg": "/tiktok-ui/static/media/logo.b64e30c17e462b405681f0ab469f1aed.svg",
+    "static/media/settingicon.svg": "/tiktok-ui/static/media/settingicon.c9c1abda413001f0342f794cfe18d190.svg",
+    "static/media/keyboardicon.svg": "/tiktok-ui/static/media/keyboardicon.d4d7cf532c80a2ee6a79d8ea4398a405.svg",
+    "static/media/coinsicon.svg": "/tiktok-ui/static/media/coinsicon.eb694e21df9f64854b257b855f7b2b2e.svg",
+    "static/media/hashtag.svg": "/tiktok-ui/static/media/hashtag.784cfd5678db74ef4bef4bb4f7920e38.svg",
+    "static/media/questionmarkicon.svg": "/tiktok-ui/static/media/questionmarkicon.ff103e90cd4f7c9a2dc5721c22067fba.svg",
+    "static/media/languageicon.svg": "/tiktok-ui/static/media/languageicon.51e2a97806f67d1270be6d7d5a7e36bf.svg",
+    "static/media/profileicon.svg": "/tiktok-ui/static/media/profileicon.33dd75b74561b5d1934e9fcad7fd3c47.svg",
+    "static/media/musicicon.svg": "/tiktok-ui/static/media/musicicon.9ddc3eff73564eadf1d5f5f5ef697b85.svg",
+    "static/media/logouticon.svg": "/tiktok-ui/static/media/logouticon.d44b8dedf22e99635d0282eec65ea0d7.svg",
+    "index.html": "/tiktok-ui/index.html",
+    "static/media/moreicon.svg": "/tiktok-ui/static/media/moreicon.6ce2ce126b85f6b3642b16bbb83330b4.svg",
+    "static/media/plusicon.svg": "/tiktok-ui/static/media/plusicon.88ab20a3a607bfd8c9a9ce5299b427f0.svg",
+    "main.750aae1a.css.map": "/tiktok-ui/static/css/main.750aae1a.css.map",
+    "main.e323ddb4.js.map": "/tiktok-ui/static/js/main.e323ddb4.js.map",
+    "787.4c9d15e8.chunk.js.map": "/tiktok-ui/static/js/787.4c9d15e8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.750aae1a.css",
+    "static/js/main.e323ddb4.js"
+  ]
+}
