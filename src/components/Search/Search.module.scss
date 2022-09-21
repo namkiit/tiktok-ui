@@ -90,3 +90,18 @@
     color: rgba(22, 24, 35, 0.5);
     padding: 5px 12px;
 }
+
+.text-result,
+.view-all {
+    padding: 14px 16px;
+    cursor: pointer;
+
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+
+    svg {
+        font-size: 12px;
+        margin-right: 8px;
+    }
+}

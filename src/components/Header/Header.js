@@ -11,6 +11,7 @@ import Menu from '~/components/Menu'
 import { InboxIcon, MessageIcon } from '~/components/Icons'
 import Image from '~/components/Image'
 import Search from '~/components/Search'
+import ModalForm from '../ModalForm'
 
 const cx = classNames.bind(styles)
 
@@ -24,76 +25,11 @@ const MENU_ITEMS = [
                 {
                     code: 'en',
                     title: 'English',
-                    subMenu: {
-                        title: 'Languages',
-                        data: [
-                            {
-                                code: 'en',
-                                title: 'English'
-                            },
-                        ]
-                    }
                 },
                 {
                     code: 'vi',
                     title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
-                {
-                    code: 'vi',
-                    title: 'Tiếng Việt',
-                },
+                }
             ]
         }
     },
@@ -185,6 +121,10 @@ function Header() {
                     </Menu>
 
                 </div>
+            </div>
+
+            <div className={cx('modal-mask')}>
+                <ModalForm />
             </div>
         </header>
     )

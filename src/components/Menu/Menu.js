@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind'
-import Tippy from '@tippyjs/react/headless'
+import HeadlessTippy from '@tippyjs/react/headless'
 import PropTypes from 'prop-types'
 
 import styles from './Menu.module.scss'
@@ -45,7 +45,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
     }
 
     return (
-        <Tippy
+        <HeadlessTippy
             interactive
             hideOnClick="false"
             placement="bottom-end"
@@ -62,7 +62,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
             onHide={handleResetMenu}
         >
             {children}
-        </Tippy>
+        </HeadlessTippy>
     )
 }
 

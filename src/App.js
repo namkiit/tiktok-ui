@@ -5,7 +5,7 @@ import { Fragment } from 'react'
 
 function App() {
   return (
-    <Router basename="/tiktok_ui">
+    <Router basename="tiktok_ui">
       <div className="App">
         <Routes>
           {PublicRoutes.map((route, index) => {
@@ -19,7 +19,7 @@ function App() {
               Layout = Fragment
             }
 
-            return <Route key={index} path={route.path} element={<Layout><Page /></Layout>}></Route>
+            return <Route exact key={index} path={route.path} element={<Layout><Page /></Layout>}></Route>
           })}
         </Routes>
       </div>

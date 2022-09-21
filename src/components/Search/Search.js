@@ -69,10 +69,14 @@ function Search() {
             render={attrs => (
                 <div className={cx('search-results')} tabIndex="-1" {...attrs}>
                     <Popper>
+                        <div className={cx('text-result')}>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} /> {searchValue}
+                        </div>
                         <h4 className={cx('search-label')}>Accounts</h4>
                         {searchResults.map((result) => {
                             return <AccountItems key={result.id} data={result} onClick={handleHideSearch}></AccountItems>
                         })}
+                        <div className={cx('view-all')}>View all results for "{searchValue}"</div>
                     </Popper>
                 </div>
             )}
