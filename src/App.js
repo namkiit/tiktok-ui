@@ -5,7 +5,7 @@ import { Fragment } from 'react'
 
 function App() {
   return (
-    <Router>
+    <Router basename="/tiktok_ui">
       <div className="App">
         <Routes>
           {PublicRoutes.map((route, index) => {
