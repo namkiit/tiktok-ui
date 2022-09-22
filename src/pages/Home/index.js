@@ -1,6 +1,10 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
+import classNames from 'classnames/bind'
 
-import Video from "~/components/Video"
+import Video from '~/components/Video'
+import styles from './Home.module.scss'
+
+const cx = classNames.bind(styles)
 
 function Home() {
     const [videos, setVideos] = useState([])
@@ -16,7 +20,7 @@ function Home() {
     }, [])
 
     return (
-        <div>
+        <div className={cx('wrapper')} style={{ height: '2000px' }}>
             {videos.map((video) => (
                 <Video key={video.id} data={video}></Video>
             ))}

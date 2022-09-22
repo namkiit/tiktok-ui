@@ -13,7 +13,7 @@ import Button from '~/components/Button'
 
 const cx = classNames.bind(styles)
 
-function Sidebar() {
+function Sidebar({ onShow }) {
     const currentUser = false
 
     const currentYear = new Date().getFullYear()
@@ -57,7 +57,7 @@ function Sidebar() {
                 {!currentUser && <div className={cx('login')}>
                     <div className={cx('detail')}>
                         <p>Log in to follow creators, like videos, and view comments.</p>
-                        <Button outline>Log in</Button>
+                        <Button outline onClick={onShow}>Log in</Button>
                     </div>
                 </div>}
 

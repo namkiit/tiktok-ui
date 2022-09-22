@@ -11,7 +11,6 @@ import Menu from '~/components/Menu'
 import { InboxIcon, MessageIcon } from '~/components/Icons'
 import Image from '~/components/Image'
 import Search from '~/components/Search'
-import ModalForm from '../ModalForm'
 
 const cx = classNames.bind(styles)
 
@@ -44,13 +43,8 @@ const MENU_ITEMS = [
     }
 ]
 
-function Header() {
-
+function Header({ onShow }) {
     const currentUser = false
-
-    const handleMenuChange = (item) => {
-        console.log(item)
-    }
 
     const userMenu = [
         {
@@ -76,6 +70,10 @@ function Header() {
         },
     ]
 
+    const handleMenuChange = (item) => {
+        console.log(item)
+    }
+
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -85,7 +83,11 @@ function Header() {
 
                 <div className={cx('actions')}>
 
-                    <Button to={config.routes.upload}><img className={cx('upload-icon')} src={images.plusIcon} alt="" /> Upload</Button>
+                    {currentUser ?
+                        <Button to={config.routes.upload}><img className={cx('upload-icon')} src={images.plusIcon} alt="" /> Upload</Button>
+                        :
+                        <Button onClick={onShow}><img className={cx('upload-icon')} src={images.plusIcon} alt="" /> Upload</Button>
+                    }
 
                     {currentUser ? (
                         <>
@@ -103,7 +105,7 @@ function Header() {
                         </>
                     ) : (
                         <>
-                            <Button primary>Log in</Button>
+                            <Button primary onClick={onShow}>Log in</Button>
                         </>
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
@@ -121,10 +123,6 @@ function Header() {
                     </Menu>
 
                 </div>
-            </div>
-
-            <div className={cx('modal-mask')}>
-                <ModalForm />
             </div>
         </header>
     )

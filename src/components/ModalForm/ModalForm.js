@@ -5,10 +5,11 @@ import { QRIcon, UserIcon, XMarkIcon } from '~/components/Icons'
 import styles from './ModalForm.module.scss'
 import images from '~/assets/images'
 import Button from '~/components/Button'
+import { Link } from 'react-router-dom'
 
 const cx = classNames.bind(styles)
 
-function ModalForm() {
+function ModalForm({ onHide }) {
     const [formLoginState, setFormLoginState] = useState('login')
     const [filteredForm, setFilteredForm] = useState([])
 
@@ -93,31 +94,39 @@ function ModalForm() {
     }, [loginRegisterForm, formLoginState])
 
     return (
-        <div className={cx('wrapper')}>
-            <div className={cx('container')}>
+        <div className={cx('modal-mask')}>
+            <div className={cx('wrapper')}>
+                <div className={cx('container')}>
 
-                <div className={cx('inner')}>
-                    <div className={cx('title')}>{filteredForm.title}</div>
+                    <div className={cx('inner')}>
+                        <div className={cx('title')}>{filteredForm.title}</div>
 
-                    <div className={cx('list')}>
-                        {filteredForm.contents.map((content, index) => {
-                            return <Button style={{ height: '44px', marginBottom: '16px' }} key={index}>
-                                <span className={cx('icon')}>{content.icon}</span> <span>{content.title}</span>
-                            </Button>
-                        })}
+                        <div className={cx('list')}>
+                            {filteredForm.contents?.map((content, index) => {
+                                return <Button style={{ height: '44px', marginBottom: '16px' }} key={index}>
+                                    <span className={cx('icon')}>{content.icon}</span> <span>{content.title}</span>
+                                </Button>
+                            })}
+                        </div>
+                    </div>
+
+                    {formLoginState === 'register' &&
+                        <div className={cx('agreement')}>
+                            <p> By continuing, you agree to TikTok's <Link to="/">Terms of Service</Link> and confirm that you have read TikTok's <Link to="/">Privacy Policy</Link>.</p>
+                        </div>}
+
+                    <div className={cx('footer')}>
+                        {formLoginState === 'login' ?
+                            <>Don't have an account? <p onClick={() => setFormLoginState('register')}> Sign up</p> </> :
+                            <>Already have an account? <p onClick={() => setFormLoginState('login')}>Log in</p></>
+                        }
                     </div>
                 </div>
 
-                <div className={cx('footer')}>
-                    {formLoginState === 'login' ?
-                        <>Don't have an account? <p onClick={() => setFormLoginState('register')}> Sign up</p> </> :
-                        <>Already have an account? <p onClick={() => setFormLoginState('login')}>Log in</p></>
-                    }
-                </div>
+                <div className={cx('close-btn')} onClick={onHide}> <XMarkIcon /> </div>
             </div>
-
-            <div className={cx('close-btn')}> <XMarkIcon /> </div>
         </div>
+
     )
 }
 

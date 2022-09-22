@@ -1,3 +1,17 @@
+.modal-mask {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    inset: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+
+    &.inactive {
+        display: none;
+    }
+}
+
 .wrapper {
     border-radius: 8px;
     transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
@@ -8,6 +22,7 @@
     height: 80%;
     overflow: hidden;
     background-color: rgb(255, 255, 255);
+    animation: showLoginForm 0.33s linear, hidden 0.23s linear;
 }
 
 .container {
@@ -59,6 +74,29 @@
     line-height: normal;
 }
 
+.agreement {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(255, 255, 255);
+    padding: 18px 30px;
+
+    p {
+        color: rgba(22, 24, 35, 0.5);
+        font-size: 12px;
+        line-height: 15px;
+        width: 375px;
+        text-align: center;
+
+        a {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
 .close-btn {
     position: absolute;
     top: 15px;
@@ -103,5 +141,27 @@
             cursor: pointer;
             text-decoration: underline;
         }
+    }
+}
+
+@keyframes showLoginForm {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes hideLoginForm {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0);
     }
 }

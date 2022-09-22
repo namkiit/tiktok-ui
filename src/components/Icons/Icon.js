@@ -375,3 +375,56 @@ export const XMarkIcon = ({ className, width = '1em', height = '1em' }) => (
         ></path>
     </svg>
 )
+
+export const ForwardStepIcon = ({ className, width = '1.6rem', height = '1.6rem' }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 48 48"
+        fill="#FFF"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M22.1086 20.3412C23.1028 19.2196 24.8972 19.2196 25.8914 20.3412L42.8955 39.5236C44.2806 41.0861 43.1324 43.5 41.004 43.5L6.99596 43.5C4.86764 43.5 3.71945 41.0861 5.10454 39.5235L22.1086 20.3412Z"
+        ></path>
+        <path
+            d="M4.5 7.5C4.5 5.84315 5.84315 4.5 7.5 4.5L40.5 4.5C42.1569 4.5 43.5 5.84315 43.5 7.5C43.5 9.15685 42.1569 10.5 40.5 10.5L7.5 10.5C5.84315 10.5 4.5 9.15685 4.5 7.5Z"
+        ></path>
+    </svg>
+)
+
+export const PCIcon = ({ className, width = '2.1rem', height = '2.1rem' }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 21 19"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+    >
+        <path
+            fill="#161823"
+            d="M12.601 17h2.52a.84.84 0 110 1.68h-9.24a.84.84 0 110-1.68h2.1v-2.1h-6.3A1.682 1.682 0 010 13.22V1.88C0 .952.754.199 1.68.199h17.642c.927 0 1.68.753 1.68 1.68V13.22c0 .927-.753 1.68-1.68 1.68h-6.72V17zm-.84 0v-2.1h-2.94V17h2.94zM1.681 1.88v11.34h17.641V1.88H1.68z"
+        ></path>
+    </svg>
+)
+
+export const SmartPhoneIcon = ({ className, width = '2.1rem', height = '2.1rem' }) => (
+    <svg
+        className={className}
+        width={width}
+        height={height}
+        viewBox="0 0 48 48"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M8 7C8 4.23858 10.2386 2 13 2H35C37.7614 2 40 4.23858 40 7V41C40 43.7614 37.7614 46 35 46H13C10.2386 46 8 43.7614 8 41V7ZM13 6C12.4477 6 12 6.44772 12 7V41C12 41.5523 12.4477 42 13 42H35C35.5523 42 36 41.5523 36 41V7C36 6.44772 35.5523 6 35 6H13ZM18 10C18 9.44772 18.4477 9 19 9H29C29.5523 9 30 9.44772 30 10V12C30 12.5523 29.5523 13 29 13H19C18.4477 13 18 12.5523 18 12V10ZM24 39C25.6569 39 27 37.6569 27 36C27 34.3431 25.6569 33 24 33C22.3431 33 21 34.3431 21 36C21 37.6569 22.3431 39 24 39Z"
+        ></path>
+    </svg>
+)
