@@ -1,0 +1,91 @@
+.wrapper {
+    width: 1100px;
+    box-shadow: rgb(0 0 0 / 6%) 0px 2px 8px;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    padding: 24px 56px;
+}
+
+.title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.5;
+    display: block;
+}
+
+.subtitle {
+    display: block;
+    line-height: 1.5;
+    font-size: 1.7rem;
+    color: rgba(22, 24, 35, 0.5);
+    margin-top: 2px;
+}
+
+.content {
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 130px;
+}
+
+.uploader {
+    margin-top: 24px;
+}
+
+.upload-card {
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: background 0.15s ease-in-out 0s;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 260px;
+    height: 458px;
+    border: 2px dashed rgba(22, 24, 35, 0.2);
+
+    button {
+        margin-top: 32px;
+        width: 100%;
+        border-radius: 2px;
+    }
+
+    &:hover {
+        border: 2px dashed rgb(254, 44, 85);
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.cloud-icon {
+    width: 40px;
+    height: 29px;
+}
+
+.text-main {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.text-sub {
+    margin-top: 4px;
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgba(22, 24, 35, 0.75);
+}
+
+.text-video-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: rgba(22, 24, 35, 0.5);
+
+    span {
+        margin-bottom: 6px;
+    }
+}

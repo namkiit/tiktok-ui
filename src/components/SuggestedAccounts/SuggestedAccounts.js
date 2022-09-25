@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import HeadlessTippy from '@tippyjs/react/headless'
 import classNames from 'classnames/bind'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import styles from './SuggestedAccounts.module.scss'
 import Image from '~/components/Image'
-import HeadlessTippy from '@tippyjs/react/headless'
 import Popper from '~/components/Popper'
 import Button from '../Button'
 

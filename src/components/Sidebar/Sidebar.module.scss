@@ -159,8 +159,9 @@
             cursor: pointer;
         }
 
-        img {
+        svg {
             margin-right: 6px;
+            flex-shrink: 0;
         }
 
         .text {

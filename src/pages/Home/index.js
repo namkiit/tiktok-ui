@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import classNames from 'classnames/bind'
 
+import * as videoService from '~/services/videoService'
 import Video from '~/components/Video'
 import styles from './Home.module.scss'
 
@@ -8,16 +9,16 @@ const cx = classNames.bind(styles)
 
 function Home() {
     const [videos, setVideos] = useState([])
+    const [page, setPage] = useState(1)
 
     useEffect(() => {
+        const fetchAPI = async () => {
+            const result = await videoService.loadVideo('for-you', page)
+            setVideos(result)
+        }
 
-        fetch(`https://tiktok.fullstack.edu.vn/api/videos?type=for-you&page=1`)
-            .then(response => response.json())
-            .then(response => setVideos(response.data))
-            .catch(err => console.error(err))
-
-
-    }, [])
+        fetchAPI()
+    }, [page])
 
     return (
         <div className={cx('wrapper')} style={{ height: '2000px' }}>

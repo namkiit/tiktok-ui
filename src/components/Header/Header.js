@@ -8,7 +8,7 @@ import styles from './Header.module.scss'
 import images from '~/assets/images'
 import Button from '~/components/Button'
 import Menu from '~/components/Menu'
-import { InboxIcon, MessageIcon } from '~/components/Icons'
+import { InboxIcon, MessageIcon, LanguageIcon, QuestionMarkIcon, KeyboardIcon, UserIcon, TikTokCoinIcon, GearIcon, LogOutIcon, PlusIcon, EllipsisVerticalIcon } from '~/components/Icons'
 import Image from '~/components/Image'
 import Search from '~/components/Search'
 
@@ -16,7 +16,7 @@ const cx = classNames.bind(styles)
 
 const MENU_ITEMS = [
     {
-        icon: <img src={images.languageIcon} alt="" />,
+        icon: <LanguageIcon />,
         title: 'English',
         subMenu: {
             title: 'Languages',
@@ -33,38 +33,38 @@ const MENU_ITEMS = [
         }
     },
     {
-        icon: <img src={images.questionMarkIcon} alt="" />,
+        icon: <QuestionMarkIcon />,
         title: 'Feedback and help',
         to: '/feedback'
     },
     {
-        icon: <img src={images.keyboardIcon} alt="" />,
+        icon: <KeyboardIcon />,
         title: 'Keyboard shortcuts'
     }
 ]
 
 function Header({ onShow }) {
-    const currentUser = false
+    const currentUser = true
 
     const userMenu = [
         {
-            icon: <img src={images.profileIcon} alt="" />,
+            icon: <UserIcon />,
             title: 'Profile',
             to: config.routes.profile
         },
         {
-            icon: <img src={images.coinsIcon} alt="" />,
+            icon: <TikTokCoinIcon />,
             title: 'Get coins',
             to: config.routes.coin
         },
         {
-            icon: <img src={images.settingIcon} alt="" />,
+            icon: <GearIcon />,
             title: 'Settings',
             to: config.routes.setting
         },
         ...MENU_ITEMS,
         {
-            icon: <img src={images.logoutIcon} alt="" />,
+            icon: <LogOutIcon />,
             title: 'Log out',
             separate: true
         },
@@ -84,9 +84,9 @@ function Header({ onShow }) {
                 <div className={cx('actions')}>
 
                     {currentUser ?
-                        <Button to={config.routes.upload}><img className={cx('upload-icon')} src={images.plusIcon} alt="" /> Upload</Button>
+                        <Button to={config.routes.upload}><PlusIcon className={cx('upload-icon')} /> Upload</Button>
                         :
-                        <Button onClick={onShow}><img className={cx('upload-icon')} src={images.plusIcon} alt="" /> Upload</Button>
+                        <Button onClick={onShow}><PlusIcon className={cx('upload-icon')} /> Upload</Button>
                     }
 
                     {currentUser ? (
@@ -117,7 +117,7 @@ function Header({ onShow }) {
                             />
                         ) : (
                             <button className={cx('more-btn')}>
-                                <img className={cx('more-icon')} src={images.moreIcon} alt="More" />
+                                <EllipsisVerticalIcon className={cx('more-icon')} />
                             </button>
                         )}
                     </Menu>

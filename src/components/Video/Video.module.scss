@@ -24,6 +24,7 @@
     width: 56px;
     height: 56px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .content {
@@ -212,5 +213,51 @@
         line-height: 17px;
         text-align: center;
         font-weight: bold;
+    }
+}
+
+//Tippy CSS
+.account-tab {
+    width: 320px;
+    padding: 20px;
+
+    .header {
+        display: flex;
+        margin-bottom: 12px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .tippy-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+    }
+
+    .tippy-username {
+        font-size: 1.8rem;
+        font-weight: 700;
+    }
+
+    .tippy-name {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .user-stats {
+        display: flex;
+        margin-top: 8px;
+        font-weight: 400;
+        font-size: 17px;
+        line-height: 20px;
+    }
+
+    .bold {
+        font-weight: 700;
+    }
+
+    .follower-stats {
+        margin-right: 15px;
     }
 }

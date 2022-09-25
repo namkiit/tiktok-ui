@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '@fortawesome/free-regular-svg-icons'
 
 import config from '~/config'
-import { GroupUserActiveIcon, GroupUserIcon, HomeActiveIcon, HomeIcon, LiveActiveIcon, LiveIcon } from '~/components/Icons'
+import * as suggestedAccountService from '~/services/suggestedAccountService'
+import { GroupUserActiveIcon, GroupUserIcon, HashtagIcon, HomeActiveIcon, HomeIcon, LiveActiveIcon, LiveIcon, MusicIcon } from '~/components/Icons'
 import styles from './Sidebar.module.scss'
-import images from '~/assets/images'
 import SuggestedAccounts from '~/components/SuggestedAccounts'
 import Button from '~/components/Button'
 
@@ -22,19 +22,18 @@ function Sidebar({ onShow }) {
     const [seeAll, setSeeAll] = useState(false)
 
     useEffect(() => {
-        if (seeAll) {
-            fetch('https://tiktok.fullstack.edu.vn/api/users/suggested?page=1&per_page=16')
-                .then(response => response.json())
-                .then(response => setSuggests(response.data))
-                .catch(err => console.error(err))
+        const fetchAPI = async () => {
+
+            if (!seeAll) {
+                const result = await suggestedAccountService.suggest(1, 5)
+                setSuggests(result)
+            } else {
+                const result = await suggestedAccountService.suggest(1, 16)
+                setSuggests(result)
+            }
         }
 
-        else {
-            fetch('https://tiktok.fullstack.edu.vn/api/users/suggested?page=1&per_page=5')
-                .then(response => response.json())
-                .then(response => setSuggests(response.data))
-                .catch(err => console.error(err))
-        }
+        fetchAPI()
     }, [seeAll])
 
     return (
@@ -84,20 +83,44 @@ function Sidebar({ onShow }) {
                     <p className={cx('title')}>Discover</p>
                     <div className={cx('discover-list')}>
                         <div className={cx('hashtag')}>
-                            <img src={images.hashtag} alt="" />
+                            <HashtagIcon />
                             <p className={cx('text')}>suthatla</p>
                         </div>
                         <div className={cx('hashtag')}>
-                            <img src={images.hashtag} alt="" />
+                            <HashtagIcon />
                             <p className={cx('text')}>mackedoi</p>
                         </div>
                         <div className={cx('hashtag')}>
-                            <img src={images.hashtag} alt="" />
+                            <HashtagIcon />
                             <p className={cx('text')}>sansangthaydoi</p>
                         </div>
                         <div className={cx('hashtag')}>
-                            <img src={images.musicIcon} alt="" />
+                            <MusicIcon width='1.6rem' height='1.6rem' />
                             <p className={cx('text')}>Yêu Đơn Phương Là Gì (MEE Remix) - Mee Remix sdaak</p>
+                        </div>
+                        <div className={cx('hashtag')}>
+                            <MusicIcon width='1.6rem' height='1.6rem' />
+                            <p className={cx('text')}>Về Nghe Mẹ Ru - NSND Bach Tuyet &amp; Hứa Kim Tuyền &amp; 14 Casper &amp; Hoàng Dũng</p>
+                        </div>
+                        <div className={cx('hashtag')}>
+                            <MusicIcon width='1.6rem' height='1.6rem' />
+                            <p className={cx('text')}>Thiên Thần Tình Yêu - RICKY STAR</p>
+                        </div>
+                        <div className={cx('hashtag')}>
+                            <HashtagIcon />
+                            <p className={cx('text')}>7749hieuung</p>
+                        </div>
+                        <div className={cx('hashtag')}>
+                            <HashtagIcon />
+                            <p className={cx('text')}>genzlife</p>
+                        </div>
+                        <div className={cx('hashtag')}>
+                            <MusicIcon width='1.6rem' height='1.6rem' />
+                            <p className={cx('text')}>Tình Đã Đầy Một Tim - Huyền Tâm Môn</p>
+                        </div>
+                        <div className={cx('hashtag')}>
+                            <MusicIcon width='1.6rem' height='1.6rem' />
+                            <p className={cx('text')}>Thằng Hầu (Thái Hoàng Remix) [Short Version] - Dunghoangpham</p>
                         </div>
                     </div>
                 </div>
