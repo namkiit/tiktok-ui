@@ -14,16 +14,27 @@ function Home() {
     useEffect(() => {
         const fetchAPI = async () => {
             const result = await videoService.loadVideo('for-you', page)
-            setVideos(result)
+            setVideos(prev => [...prev, ...result])
         }
 
         fetchAPI()
     }, [page])
 
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [])
+
+    function handleScroll() {
+        if (window.scrollY + window.innerHeight >= document.body.offsetHeight) {
+            setPage(page => page + 1)
+        }
+    }
+
     return (
-        <div className={cx('wrapper')} style={{ height: '2000px' }}>
-            {videos.map((video) => (
-                <Video key={video.id} data={video}></Video>
+        <div className={cx('wrapper')}>
+            {videos.map((video, index) => (
+                <Video key={index} data={video}></Video>
             ))}
         </div>
     )

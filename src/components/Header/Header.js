@@ -44,7 +44,7 @@ const MENU_ITEMS = [
 ]
 
 function Header({ onShow }) {
-    const currentUser = true
+    const currentUser = false
 
     const userMenu = [
         {

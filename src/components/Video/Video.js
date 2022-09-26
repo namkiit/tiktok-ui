@@ -1,11 +1,11 @@
+import { useRef, useState, useEffect } from 'react'
 import classNames from 'classnames/bind'
-import { useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import HeadlessTippy from '@tippyjs/react/headless'
 
 import styles from './Video.module.scss'
-import { CommentIcon, FlagIcon, HeartIcon, MusicIcon, PauseIcon, PlayIcon, ShareIcon, VolumeIcon } from '~/components/Icons'
+import { CommentIcon, FlagIcon, HeartIcon, MusicIcon, MutedIcon, PauseIcon, PlayIcon, ShareIcon, VolumeIcon } from '~/components/Icons'
 import Button from '~/components/Button'
 import Image from '~/components/Image'
 import Popper from '~/components/Popper'
@@ -14,29 +14,69 @@ const cx = classNames.bind(styles)
 
 function Video({ data }) {
     const [isPlaying, setIsPlaying] = useState(false)
+    const [muted, setMuted] = useState(false)
+    const [volume, setVolume] = useState(0.45)
 
     const videoRef = useRef()
-    const imageRef = useRef()
-    const authorInfoRef = useRef()
 
-    const togglePlayVideo = () => {
-        if (!isPlaying) {
+    const playVideo = () => {
+        if (isPlaying === false) {
             videoRef.current.play()
             setIsPlaying(true)
-        } else {
+        }
+    }
+
+    const pauseVideo = () => {
+        if (isPlaying === true) {
             videoRef.current.pause()
             setIsPlaying(false)
         }
     }
 
-    const handleAdjustVolume = (e) => {
-        videoRef.current.volume = e.target.value / 100
+    const togglePlayVideo = () => {
+        if (isPlaying === false) {
+            playVideo()
+        } else {
+            pauseVideo()
+        }
     }
+
+    const handleAdjustVolume = (e) => {
+        setVolume(e.target.value / 100)
+        videoRef.current.volume = volume
+    }
+
+    const toggleMuted = () => {
+        if (muted) {
+            setVolume(0.45)
+            videoRef.current.volume = 0.45
+            setMuted(false)
+        } else {
+            setVolume(0)
+            videoRef.current.volume = 0
+            setMuted(true)
+        }
+    }
+
+    function elementInViewport() {
+
+        var bounding = videoRef.current.getBoundingClientRect()
+
+        if (bounding.top >= 0 && bounding.left >= 0 && bounding.right <= (window.innerWidth || document.documentElement.clientWidth) && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)) {
+            playVideo()
+        } else {
+            pauseVideo()
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', elementInViewport);
+        return () => window.removeEventListener('scroll', elementInViewport);
+    })
 
     return (
         <div className={cx('wrapper')}>
             <Image
-                ref={imageRef}
                 className={cx('avatar')}
                 src={data?.user.avatar}
                 alt={data?.user.avatar}
@@ -45,7 +85,7 @@ function Video({ data }) {
             <div className={cx('content')}>
                 <div className={cx('info-wrapper')}>
                     <div className={cx('text-info')}>
-                        <div className={cx('author')} ref={authorInfoRef}>
+                        <div className={cx('author')}>
                             <div>
                                 <HeadlessTippy
                                     interactive
@@ -101,7 +141,7 @@ function Video({ data }) {
 
                 <div className={cx('video-wrapper')}>
                     <div className={cx('video-card')}>
-                        <video src={data?.file_url} ref={videoRef}></video>
+                        <video loop src={data?.file_url} ref={videoRef} volume={volume}></video>
 
                         <div className={cx('control-play')} onClick={togglePlayVideo}>
                             {isPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -109,9 +149,10 @@ function Video({ data }) {
 
                         <div className={cx('control-volume')}>
                             <div className={cx('container')}>
-                                <input type="range" min="0" max="100" step="1" orient="vertical" onChange={handleAdjustVolume} />
+                                <input type="range" min="0" max="100" step="1" orient="vertical" onChange={handleAdjustVolume} value={volume * 100} />
                             </div>
-                            <VolumeIcon />
+
+                            <div className={cx('volume-icon')} onClick={toggleMuted}>{muted ? <MutedIcon /> : <VolumeIcon />}</div>
                         </div>
 
                         <div className={cx('report')}>
