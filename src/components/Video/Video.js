@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, useContext } from 'react'
 import classNames from 'classnames/bind'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
@@ -9,6 +9,7 @@ import { CommentIcon, FlagIcon, HeartIcon, MusicIcon, MutedIcon, PauseIcon, Play
 import Button from '~/components/Button'
 import Image from '~/components/Image'
 import Popper from '~/components/Popper'
+import { ModalContext } from '~/components/ModalProvider'
 
 const cx = classNames.bind(styles)
 
@@ -16,6 +17,7 @@ function Video({ data, volume, muted, adjustVolume, toggleMuted }) {
     const [isPlaying, setIsPlaying] = useState(false)
 
     const videoRef = useRef()
+    const context = useContext(ModalContext)
 
     useEffect(() => {
         videoRef.current.volume = volume
@@ -126,7 +128,7 @@ function Video({ data, volume, muted, adjustVolume, toggleMuted }) {
 
                 <div className={cx('video-wrapper')}>
                     <div className={cx('video-card')}>
-                        <video loop src={data?.file_url} ref={videoRef} volume={volume}></video>
+                        <video loop src={data?.file_url} ref={videoRef}></video>
 
                         <div className={cx('control-play')} onClick={togglePlayVideo}>
                             {isPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -147,11 +149,11 @@ function Video({ data, volume, muted, adjustVolume, toggleMuted }) {
 
                     <div className={cx('actions')}>
                         <div className={cx('action-btn')}>
-                            <Button rounded><HeartIcon /></Button>
+                            <Button rounded onClick={context.handleShowModal}><HeartIcon /></Button>
                             <p className={cx('numbers')}>{data?.likes_count}</p>
                         </div>
                         <div className={cx('action-btn')}>
-                            <Button rounded><CommentIcon /></Button>
+                            <Button rounded onClick={context.handleShowModal}><CommentIcon /></Button>
                             <p className={cx('numbers')}>{data?.comments_count}</p>
                         </div>
                         <div className={cx('action-btn')}>
