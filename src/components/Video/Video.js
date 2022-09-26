@@ -44,6 +44,9 @@ function Video({ data }) {
     const handleAdjustVolume = (e) => {
         setVolume(e.target.value / 100)
         videoRef.current.volume = volume
+        if (volume > 0) {
+            setMuted(false)
+        }
     }
 
     const toggleMuted = () => {
@@ -141,7 +144,7 @@ function Video({ data }) {
 
                 <div className={cx('video-wrapper')}>
                     <div className={cx('video-card')}>
-                        <video loop src={data?.file_url} ref={videoRef} volume={volume}></video>
+                        <video loop src={data?.file_url} ref={videoRef}></video>
 
                         <div className={cx('control-play')} onClick={togglePlayVideo}>
                             {isPlaying ? <PauseIcon /> : <PlayIcon />}
