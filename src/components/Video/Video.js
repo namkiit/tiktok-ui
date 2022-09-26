@@ -12,12 +12,14 @@ import Popper from '~/components/Popper'
 
 const cx = classNames.bind(styles)
 
-function Video({ data }) {
+function Video({ data, volume, muted, adjustVolume, toggleMuted }) {
     const [isPlaying, setIsPlaying] = useState(false)
-    const [muted, setMuted] = useState(false)
-    const [volume, setVolume] = useState(0.45)
 
     const videoRef = useRef()
+
+    useEffect(() => {
+        videoRef.current.volume = volume
+    })
 
     const playVideo = () => {
         if (isPlaying === false) {
@@ -38,26 +40,6 @@ function Video({ data }) {
             playVideo()
         } else {
             pauseVideo()
-        }
-    }
-
-    const handleAdjustVolume = (e) => {
-        setVolume(e.target.value / 100)
-        videoRef.current.volume = volume
-        if (volume > 0) {
-            setMuted(false)
-        }
-    }
-
-    const toggleMuted = () => {
-        if (muted) {
-            setVolume(0.45)
-            videoRef.current.volume = 0.45
-            setMuted(false)
-        } else {
-            setVolume(0)
-            videoRef.current.volume = 0
-            setMuted(true)
         }
     }
 
@@ -144,7 +126,7 @@ function Video({ data }) {
 
                 <div className={cx('video-wrapper')}>
                     <div className={cx('video-card')}>
-                        <video loop src={data?.file_url} ref={videoRef}></video>
+                        <video loop src={data?.file_url} ref={videoRef} volume={volume}></video>
 
                         <div className={cx('control-play')} onClick={togglePlayVideo}>
                             {isPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -152,7 +134,7 @@ function Video({ data }) {
 
                         <div className={cx('control-volume')}>
                             <div className={cx('container')}>
-                                <input type="range" min="0" max="100" step="1" orient="vertical" onChange={handleAdjustVolume} value={volume * 100} />
+                                <input type="range" min="0" max="100" step="1" orient="vertical" onChange={adjustVolume} value={volume * 100} />
                             </div>
 
                             <div className={cx('volume-icon')} onClick={toggleMuted}>{muted ? <MutedIcon /> : <VolumeIcon />}</div>

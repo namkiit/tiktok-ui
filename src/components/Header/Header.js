@@ -128,4 +128,4 @@ function Header({ onShow }) {
     )
 }
 
-export default Header;
+export default Header

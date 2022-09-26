@@ -10,6 +10,8 @@ const cx = classNames.bind(styles)
 function Home() {
     const [videos, setVideos] = useState([])
     const [page, setPage] = useState(1)
+    const [volume, setVolume] = useState(0.45)
+    const [muted, setMuted] = useState(false)
 
     useEffect(() => {
         const fetchAPI = async () => {
@@ -31,10 +33,27 @@ function Home() {
         }
     }
 
+    const handleAdjustVolume = (e) => {
+        setVolume(e.target.value / 100)
+        if (volume > 0) {
+            setMuted(false)
+        }
+    }
+
+    const toggleMuted = () => {
+        if (muted) {
+            setVolume(0.4)
+            setMuted(false)
+        } else {
+            setVolume(0)
+            setMuted(true)
+        }
+    }
+
     return (
         <div className={cx('wrapper')}>
             {videos.map((video, index) => (
-                <Video key={index} data={video}></Video>
+                <Video key={index} data={video} volume={volume} muted={muted} adjustVolume={handleAdjustVolume} toggleMuted={toggleMuted}></Video>
             ))}
         </div>
     )
