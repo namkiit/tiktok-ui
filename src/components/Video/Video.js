@@ -13,7 +13,7 @@ import { ModalContext } from '~/components/ModalProvider'
 
 const cx = classNames.bind(styles)
 
-function Video({ data, volume, muted, adjustVolume, toggleMuted }) {
+function Video({ data, volume, adjustVolume, toggleMuted }) {
     const [isPlaying, setIsPlaying] = useState(false)
 
     const videoRef = useRef()
@@ -46,7 +46,6 @@ function Video({ data, volume, muted, adjustVolume, toggleMuted }) {
     }
 
     function elementInViewport() {
-
         var bounding = videoRef.current.getBoundingClientRect()
 
         if (bounding.top >= 0 && bounding.left >= 0 && bounding.right <= (window.innerWidth || document.documentElement.clientWidth) && bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight)) {
@@ -90,7 +89,7 @@ function Video({ data, volume, muted, adjustVolume, toggleMuted }) {
                                                         alt={data?.user.avatar}
                                                     />
 
-                                                    <Button primary outline>Follow</Button>
+                                                    <Button primary outline onClick={context.handleShowModal}>Follow</Button>
                                                 </div>
 
                                                 <div className={cx('tippy-username')}>
@@ -123,12 +122,12 @@ function Video({ data, volume, muted, adjustVolume, toggleMuted }) {
                         <div className={cx('music')}><MusicIcon className={cx('icon')} />{data?.music}</div>
                     </div>
 
-                    <Button outline style={{ height: '28px' }}>Follow</Button>
+                    <Button outline style={{ height: '28px' }} onClick={context.handleShowModal}>Follow</Button>
                 </div>
 
                 <div className={cx('video-wrapper')}>
                     <div className={cx('video-card')}>
-                        <video loop src={data?.file_url} ref={videoRef}></video>
+                        <video muted={volume === 0} loop src={data?.file_url} ref={videoRef}></video>
 
                         <div className={cx('control-play')} onClick={togglePlayVideo}>
                             {isPlaying ? <PauseIcon /> : <PlayIcon />}
@@ -139,7 +138,7 @@ function Video({ data, volume, muted, adjustVolume, toggleMuted }) {
                                 <input type="range" min="0" max="100" step="1" orient="vertical" onChange={adjustVolume} value={volume * 100} />
                             </div>
 
-                            <div className={cx('volume-icon')} onClick={toggleMuted}>{muted ? <MutedIcon /> : <VolumeIcon />}</div>
+                            <div className={cx('volume-icon')} onClick={toggleMuted}>{volume === 0 ? <MutedIcon /> : <VolumeIcon />}</div>
                         </div>
 
                         <div className={cx('report')}>
