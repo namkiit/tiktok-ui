@@ -109,6 +109,10 @@ function Video({ data, volume, adjustVolume, toggleMuted }) {
                                                         <span className={cx('bold')}>{data?.user.likes_count}</span> Likes
                                                     </div>
                                                 </div>
+
+                                                <div className={cx('user-bio')}>
+                                                    {data?.user.bio}
+                                                </div>
                                             </Popper>
                                         </div>
                                     )}
