@@ -63,6 +63,12 @@
     span {
         font-size: 15px;
     }
+
+    .more-btn {
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+    }
 }
 
 .title {

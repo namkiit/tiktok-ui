@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import { useState, useMemo, useEffect } from 'react'
 
-import { QRIcon, UserIcon, XMarkIcon } from '~/components/Icons'
+import { ChevronDownIcon, QRIcon, UserIcon, XMarkIcon } from '~/components/Icons'
 import styles from './ModalForm.module.scss'
 import images from '~/assets/images'
 import Button from '~/components/Button'
@@ -59,6 +59,25 @@ function ModalForm({ onHide }) {
         {
             type: 'register',
             title: 'Sign up for TikTok',
+            showMore: true,
+            contents: [
+                {
+                    icon: <UserIcon />,
+                    title: 'Use phone or email',
+                },
+                {
+                    icon: <img src={images.facebook} alt="" />,
+                    title: 'Continue with Facebook',
+                },
+                {
+                    icon: <img src={images.google} alt="" />,
+                    title: 'Continue with Google',
+                },
+            ]
+        },
+        {
+            type: 'register-expanded',
+            title: 'Sign up for TikTok',
             contents: [
                 {
                     icon: <UserIcon />,
@@ -103,14 +122,16 @@ function ModalForm({ onHide }) {
 
                         <div className={cx('list')}>
                             {filteredForm.contents?.map((content, index) => {
-                                return <Button style={{ height: '44px', marginBottom: '16px' }} key={index}>
+                                return <Button style={{ height: '44px', marginBottom: '16px' }} key={index} onClick={content.onClick}>
                                     <span className={cx('icon')}>{content.icon}</span> <span>{content.title}</span>
                                 </Button>
                             })}
+
+                            {filteredForm.showMore && <div className={cx('more-btn')} onClick={() => setFormLoginState('register-expanded')}><ChevronDownIcon /></div>}
                         </div>
                     </div>
 
-                    {formLoginState === 'register' &&
+                    {formLoginState.startsWith('register') &&
                         <div className={cx('agreement')}>
                             <p> By continuing, you agree to TikTok's <Link to="/">Terms of Service</Link> and confirm that you have read TikTok's <Link to="/">Privacy Policy</Link>.</p>
                         </div>}

@@ -8,6 +8,10 @@ const images = {
     kakaotalk: require('~/assets/images/kakaotalk.svg').default,
     apple: require('~/assets/images/apple.svg').default,
     instagram: require('~/assets/images/instagram.svg').default,
+    whatsapp: require('~/assets/images/whatsapp.svg').default,
+    linkedin: require('~/assets/images/linkedin.svg').default,
+    telegram: require('~/assets/images/telegram.svg').default,
+    pinterest: require('~/assets/images/pinterest.svg').default
 }
 
 export default images

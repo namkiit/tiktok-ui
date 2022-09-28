@@ -5,11 +5,12 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import HeadlessTippy from '@tippyjs/react/headless'
 
 import styles from './Video.module.scss'
-import { CommentIcon, FlagIcon, HeartIcon, MusicIcon, MutedIcon, PauseIcon, PlayIcon, ShareIcon, VolumeIcon } from '~/components/Icons'
+import { FlagIcon, MusicIcon, MutedIcon, PauseIcon, PlayIcon, VolumeIcon } from '~/components/Icons'
 import Button from '~/components/Button'
 import Image from '~/components/Image'
 import Popper from '~/components/Popper'
 import { ModalContext } from '~/components/ModalProvider'
+import VideoAction from './VideoAction'
 
 const cx = classNames.bind(styles)
 
@@ -146,21 +147,7 @@ function Video({ data, volume, adjustVolume, toggleMuted }) {
                         </div>
                     </div>
 
-                    <div className={cx('actions')}>
-                        <div className={cx('action-btn')}>
-                            <Button rounded onClick={context.handleShowModal}><HeartIcon /></Button>
-                            <p className={cx('numbers')}>{data?.likes_count}</p>
-                        </div>
-                        <div className={cx('action-btn')}>
-                            <Button rounded onClick={context.handleShowModal}><CommentIcon /></Button>
-                            <p className={cx('numbers')}>{data?.comments_count}</p>
-                        </div>
-                        <div className={cx('action-btn')}>
-                            <Button rounded><ShareIcon /></Button>
-                            <p className={cx('numbers')}>{data?.shares_count}</p>
-
-                        </div>
-                    </div>
+                    <VideoAction data={data} />
                 </div>
             </div>
         </div >
