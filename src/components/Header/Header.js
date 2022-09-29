@@ -10,7 +10,7 @@ import Button from '~/components/Button'
 import Menu from '~/components/Menu'
 import { InboxIcon, MessageIcon, LanguageIcon, QuestionMarkIcon, KeyboardIcon, UserIcon, TikTokCoinIcon, GearIcon, LogOutIcon, PlusIcon, EllipsisVerticalIcon } from '~/components/Icons'
 import Image from '~/components/Image'
-import Search from '~/components/Search'
+import SearchInput from '~/components/SearchInput'
 
 const cx = classNames.bind(styles)
 
@@ -79,7 +79,7 @@ function Header({ onShow }) {
             <div className={cx('inner')}>
                 <Link to={config.routes.home} className={cx('logo')}><img src={images.logo} alt="TikTok" /></Link>
 
-                <div><Search /></div>
+                <div><SearchInput /></div>
 
                 <div className={cx('actions')}>
 

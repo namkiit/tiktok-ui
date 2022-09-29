@@ -1,0 +1,46 @@
+.share-tab {
+    .share-wrapper {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 22px;
+        width: 280px;
+        padding: 8px 0px;
+        max-height: 448px;
+        overflow: auto;
+    }
+
+    .share-item {
+        display: flex;
+        -webkit-box-align: center;
+        align-items: center;
+        padding: 11px 16px;
+        position: relative;
+        cursor: pointer;
+
+        svg,
+        img {
+            width: 26px;
+            height: 26px;
+            margin-right: 12px;
+        }
+
+        &.center {
+            justify-content: center;
+            padding: 0px 16px;
+        }
+
+        &:hover {
+            background: rgba(22, 24, 35, 0.03);
+        }
+    }
+
+    .more-btn {
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+
+        &:hover {
+            background: rgba(22, 24, 35, 0.03);
+        }
+    }
+}

@@ -12,6 +12,7 @@ function Home() {
     const [page, setPage] = useState(1)
     const [volume, setVolume] = useState(0.4)
     const [prevVolume, setPrevVolume] = useState(volume)
+    const [mute, setMute] = useState(false)
 
     useEffect(() => {
         const fetchAPI = async () => {
@@ -38,18 +39,20 @@ function Home() {
     }
 
     const toggleMuted = () => {
-        if (volume === 0) {
+        if (mute) {
             setVolume(prevVolume)
+            setMute(false)
         } else {
             setPrevVolume(volume)
             setVolume(0)
+            setMute(true)
         }
     }
 
     return (
         <div className={cx('wrapper')}>
             {videos.map((video, index) => (
-                <Video key={index} data={video} volume={volume} adjustVolume={handleAdjustVolume} toggleMuted={toggleMuted}></Video>
+                <Video key={index} data={video} volume={volume} mute={mute} adjustVolume={handleAdjustVolume} toggleMuted={toggleMuted}></Video>
             ))}
         </div>
     )

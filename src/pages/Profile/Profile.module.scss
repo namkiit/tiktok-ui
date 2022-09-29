@@ -1,0 +1,97 @@
+.wrapper {
+    padding: 12px 12px;
+}
+
+.info-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.basic {
+    display: flex;
+}
+
+.avatar {
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.text {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.username {
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 38px;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+.name {
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 25px;
+    text-overflow: ellipsis;
+    height: 25px;
+    max-width: 450px;
+    white-space: nowrap;
+    margin-bottom: 16px;
+}
+
+.counts {
+    display: flex;
+    align-items: center;
+    margin-top: 22px;
+    color: rgba(18, 18, 18, 0.75);
+    justify-content: space-between;
+    max-width: 345px;
+
+    strong {
+        font-weight: 700;
+        line-height: 25px;
+        font-size: 1.8rem;
+    }
+}
+
+.bio {
+    max-width: 345px;
+    text-align: left;
+    color: rgba(22, 24, 35, 1);
+    font-weight: 400;
+    white-space: pre-line;
+    margin-top: 10px;
+}
+
+.website {
+    display: flex;
+    align-items: center;
+    color: rgb(22, 24, 35);
+    font-weight: 600;
+    display: flex;
+    height: 22px;
+    margin-top: 5px;
+
+    &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+.link-icon {
+    margin-right: 2px;
+}
+
+.side-btns {
+    width: 65px;
+    display: flex;
+    justify-content: space-between;
+
+    svg {
+        cursor: pointer;
+    }
+}

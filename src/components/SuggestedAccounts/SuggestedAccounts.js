@@ -54,7 +54,7 @@ function SuggestedAccounts({ sidebar, data, ...passProps }) {
                     </div>
                 )}
             >
-                <Link to={`/@${data?.nickname}`} className={cx('wrapper', { sidebar })} {...passProps}>
+                <Link to={`/@${data?.nickname}`} className={cx('wrapper', { sidebar })} {...passProps} state={data}>
                     <Image
                         className={cx('avatar')}
                         src={data?.avatar}

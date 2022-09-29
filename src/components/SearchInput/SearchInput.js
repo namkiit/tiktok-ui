@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import classNames from 'classnames/bind'
@@ -6,13 +7,13 @@ import HeadlessTippy from '@tippyjs/react/headless'
 
 import { useDebounce } from '~/hooks'
 import * as searchService from '~/services/searchService'
-import styles from './Search.module.scss'
+import styles from './SearchInput.module.scss'
 import Popper from '~/components/Popper'
 import AccountItems from '~/components/AccountItems/'
 
 const cx = classNames.bind(styles)
 
-function Search() {
+function SearchInput() {
     const [searchValue, setSearchValue] = useState('')
     const [searchResults, setSearchResults] = useState([])
     const [showResults, setShowResults] = useState(false)
@@ -58,10 +59,6 @@ function Search() {
         setShowResults(false)
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-    }
-
     return (
         <HeadlessTippy
             visible={showResults && searchResults.length > 0}
@@ -76,7 +73,7 @@ function Search() {
                         {searchResults.map((result) => {
                             return <AccountItems key={result.id} data={result} onClick={handleHideSearch}></AccountItems>
                         })}
-                        <div className={cx('view-all')}>View all results for "{searchValue}"</div>
+                        <Link to={`/search/user/${searchValue}`} state={searchValue} onClick={handleHideSearch}><div className={cx('view-all')}>View all results for "{searchValue}"</div></Link>
                     </Popper>
                 </div>
             )}
@@ -99,12 +96,12 @@ function Search() {
 
                 {loading && <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />}
 
-                <button className={cx('search-btn')} onClick={handleSubmit} onMouseDown={e => e.preventDefault()}>
+                <Link to={`/search/user/${searchValue}`} state={searchValue} className={cx('search-btn')} onClick={handleHideSearch} onMouseDown={e => e.preventDefault()}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
+                </Link>
             </div>
         </HeadlessTippy>
     )
 }
 
-export default Search
+export default SearchInput

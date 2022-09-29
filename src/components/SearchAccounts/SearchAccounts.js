@@ -4,14 +4,14 @@ import classNames from 'classnames/bind'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import styles from './AccountItems.module.scss'
+import styles from './SearchAccounts.module.scss'
 import Image from '~/components/Image'
 
 const cx = classNames.bind(styles)
 
-function AccountItems({ data, ...passProps }) {
+function SearchAccounts({ sidebar, data, ...passProps }) {
     return (
-        <Link to={`/@${data?.nickname}`} className={cx('wrapper')} {...passProps} state={data}>
+        <Link to={`/@${data?.nickname}`} className={cx('wrapper', { sidebar })} {...passProps} state={data}>
             <Image
                 className={cx('avatar')}
                 src={data?.avatar}
@@ -23,14 +23,15 @@ function AccountItems({ data, ...passProps }) {
                     <span>{data?.nickname}</span>
                     {data?.tick && <FontAwesomeIcon className={cx('verified')} icon={faCheckCircle} />}
                 </div>
-                <div className={cx('name')}>{data?.full_name || `${data?.first_name} ${data?.last_name}`}</div>
+                <div className={cx('name')}>{data?.full_name || `${data?.first_name} ${data?.last_name}`} - <strong>{data?.followers_count}</strong> Followers</div>
+                <div className={cx('bio')}>{data?.bio}</div>
             </div>
         </Link>
     )
 }
 
-AccountItems.propTypes = {
+SearchAccounts.propTypes = {
     data: PropTypes.object.isRequired,
 }
 
-export default AccountItems
+export default SearchAccounts
