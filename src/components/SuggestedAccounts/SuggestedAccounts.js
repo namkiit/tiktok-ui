@@ -21,6 +21,7 @@ function SuggestedAccounts({ sidebar, data, ...passProps }) {
         <div>
             <HeadlessTippy
                 interactive
+                appendTo={document.body}
                 hideOnClick="false"
                 placement="bottom"
                 delay={[1000, 0]}
