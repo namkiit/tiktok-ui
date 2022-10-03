@@ -33,6 +33,7 @@ function GetApp() {
                     trigger="click"
                     placement="top-end"
                     offset={[0, -30]}
+                    zIndex="9"
                     render={attrs => (
                         <div tabIndex="-1" {...attrs}>
                             <Popper>

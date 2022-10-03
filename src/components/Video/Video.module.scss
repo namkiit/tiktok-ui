@@ -4,6 +4,10 @@
     position: relative;
     justify-content: flex-end;
 
+    a {
+        height: 56px;
+    }
+
     &::after {
         content: '';
         position: absolute;

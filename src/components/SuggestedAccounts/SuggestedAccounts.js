@@ -25,6 +25,7 @@ function SuggestedAccounts({ sidebar, data, ...passProps }) {
                 placement="bottom"
                 delay={[1000, 0]}
                 offset={[0, 2]}
+                zIndex="9"
                 render={attrs => (
                     <div tabIndex="-1" {...attrs}>
                         <Popper className={cx('account-tab')}>

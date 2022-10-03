@@ -84,6 +84,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
                                         placement="bottom"
                                         delay={[1000, 0]}
                                         offset={[40, 30]}
+                                        zIndex="9"
                                         render={attrs => (
                                             <div tabIndex="-1" {...attrs}>
                                                 <Popper className={cx('account-tab')}>

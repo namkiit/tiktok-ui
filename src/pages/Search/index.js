@@ -17,12 +17,19 @@ function Search() {
 
     useEffect(() => {
         const fetchAPI = async () => {
-            const result = await searchService.search(location.state, 'more', page)
-            setSearchResults(prev => [...prev, ...result])
+            const result = await searchService.search(location.state, 'more')
+            setSearchResults(result)
+            setPage(1)
         }
 
         fetchAPI()
-    }, [location.state, page])
+    }, [location.state])
+
+    const handleLoadMore = async () => {
+        const result = await searchService.search(location.state, 'more', page + 1)
+        setSearchResults(prev => [...prev, ...result])
+        setPage(page + 1)
+    }
 
     return (
         <div className={cx('wrapper')}>
@@ -39,7 +46,7 @@ function Search() {
                 })}
             </div>
 
-            <div className={cx('load-more')} onClick={() => setPage(page => page + 1)}>
+            <div className={cx('load-more')} onClick={handleLoadMore}>
                 Load more <ChevronDownIcon className={cx('icon')} width="16px" height="16px" />
             </div>
         </div>
