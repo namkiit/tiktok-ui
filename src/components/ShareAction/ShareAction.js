@@ -70,7 +70,7 @@ function ShareAction({ children, offset }) {
             placement="top"
             offset={offset}
             delay={[200, 700]}
-            zIndex="9"
+            zIndex="99"
             render={attrs => (
                 <div tabIndex="-1" {...attrs}>
                     <Popper className={cx('share-tab')}>

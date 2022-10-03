@@ -63,7 +63,7 @@ function SearchInput() {
         <HeadlessTippy
             visible={showResults && searchResults.length > 0}
             interactive
-            zIndex="9"
+            zIndex="99"
             render={attrs => (
                 <div className={cx('search-results')} tabIndex="-1" {...attrs}>
                     <Popper>

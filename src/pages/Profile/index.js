@@ -70,7 +70,7 @@ function Profile() {
                         placement="bottom-end"
                         offset={[0, 10]}
                         delay={[0, 700]}
-                        zIndex="9"
+                        zIndex="99"
                         render={attrs => (
                             <div tabIndex="-1" {...attrs}>
                                 <Popper className={cx('more-tab')}>

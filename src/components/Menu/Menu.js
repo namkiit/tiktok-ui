@@ -51,7 +51,7 @@ function Menu({ children, items = [], onChange = defaultFn }) {
             placement="bottom-end"
             offset={[10, 10]}
             delay={[0, 700]}
-            zIndex="9"
+            zIndex="99"
             render={attrs => (
                 <div className={cx('more-tab')} tabIndex="-1" {...attrs}>
                     <Popper className={cx('more-list')}>
