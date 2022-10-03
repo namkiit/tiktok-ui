@@ -18,9 +18,7 @@ function Search() {
     useEffect(() => {
         const fetchAPI = async () => {
             const result = await searchService.search(location.state, 'more', page)
-            setSearchResults(prev => {
-                return [...prev, ...result]
-            })
+            setSearchResults(prev => [...prev, ...result])
         }
 
         fetchAPI()

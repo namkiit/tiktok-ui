@@ -2,6 +2,7 @@ import config from '~/config'
 
 //Layout
 import { HeaderOnly } from '~/layouts'
+import { StretchLayout } from '~/layouts'
 
 //Pages
 import Home from '~/pages/Home'
@@ -19,7 +20,7 @@ const PublicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.following, component: Following },
     { path: config.routes.live, component: Live },
-    { path: config.routes.profile, component: Profile },
+    { path: config.routes.profile, component: Profile, layout: StretchLayout },
     { path: config.routes.search, component: Search },
     { path: config.routes.upload, component: Upload, layout: HeaderOnly },
     { path: config.routes.coin, component: Coin, layout: HeaderOnly },

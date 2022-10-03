@@ -5,7 +5,7 @@ import { useContext } from 'react'
 import Header from '~/components/Header'
 import Sidebar from '~/components/Sidebar'
 import ModalForm from '~/components/ModalForm'
-import styles from './DefaultLayout.module.scss'
+import styles from './StretchLayout.module.scss'
 import GetApp from '~/components/GetApp'
 import { ModalContext } from '~/components/ModalProvider'
 
@@ -17,9 +17,9 @@ function DefaultLayout({ children }) {
 
     return (
         <div className={cx('wrapper')}>
-            <Header />
+            <Header stretch />
             <div className={cx('container')}>
-                <Sidebar />
+                <Sidebar shrink />
                 <div className={cx('content')}>
                     {children}
                     <GetApp />

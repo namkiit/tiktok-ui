@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
 import { NavLink, Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '@fortawesome/free-regular-svg-icons'
 
@@ -10,11 +10,13 @@ import { GroupUserActiveIcon, GroupUserIcon, HashtagIcon, HomeActiveIcon, HomeIc
 import styles from './Sidebar.module.scss'
 import SuggestedAccounts from '~/components/SuggestedAccounts'
 import Button from '~/components/Button'
+import { ModalContext } from '~/components/ModalProvider'
 
 const cx = classNames.bind(styles)
 
-function Sidebar({ onShow }) {
+function Sidebar({ shrink }) {
     const currentUser = false
+    const context = useContext(ModalContext)
 
     const currentYear = new Date().getFullYear()
 
@@ -37,7 +39,7 @@ function Sidebar({ onShow }) {
     }, [seeAll])
 
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper', { shrink: shrink })}>
             <div className={cx('inner')}>
                 <div className={cx('tabs')}>
                     <NavLink to={config.routes.home} className={(nav) => cx('tab-item', { active: nav.isActive })}>
@@ -56,7 +58,7 @@ function Sidebar({ onShow }) {
                 {!currentUser && <div className={cx('login')}>
                     <div className={cx('detail')}>
                         <p>Log in to follow creators, like videos, and view comments.</p>
-                        <Button outline onClick={onShow}>Log in</Button>
+                        <Button outline onClick={context.handleShowModal}>Log in</Button>
                     </div>
                 </div>}
 

@@ -6,7 +6,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import HeadlessTippy from '@tippyjs/react/headless'
 
 import styles from './Video.module.scss'
-import { CommentIcon, FlagIcon, HeartIcon, MusicIcon, MutedIcon, PauseIcon, PlayIcon, ShareSolidIcon, VolumeIcon } from '~/components/Icons'
+import { CommentIcon, FlagIcon, HeartIcon, MusicIcon, MutedIcon, PauseIcon, PlaySolidIcon, ShareSolidIcon, VolumeIcon } from '~/components/Icons'
 import Button from '~/components/Button'
 import Image from '~/components/Image'
 import Popper from '~/components/Popper'
@@ -140,7 +140,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
                         <video loop src={data?.file_url} ref={videoRef}></video>
 
                         <div className={cx('control-play')} onClick={togglePlayVideo}>
-                            {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                            {isPlaying ? <PauseIcon /> : <PlaySolidIcon />}
                         </div>
 
                         <div className={cx('control-volume', { active: mute })}>

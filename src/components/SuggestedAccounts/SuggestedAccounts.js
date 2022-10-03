@@ -4,15 +4,19 @@ import HeadlessTippy from '@tippyjs/react/headless'
 import classNames from 'classnames/bind'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import { useContext } from 'react'
 
 import styles from './SuggestedAccounts.module.scss'
 import Image from '~/components/Image'
 import Popper from '~/components/Popper'
 import Button from '../Button'
+import { ModalContext } from '~/components/ModalProvider'
 
 const cx = classNames.bind(styles)
 
 function SuggestedAccounts({ sidebar, data, ...passProps }) {
+    const context = useContext(ModalContext)
+
     return (
         <div>
             <HeadlessTippy
@@ -31,7 +35,7 @@ function SuggestedAccounts({ sidebar, data, ...passProps }) {
                                     alt={data?.avatar}
                                 />
 
-                                <Button primary>Follow</Button>
+                                <Button primary onClick={context.handleShowModal}>Follow</Button>
                             </div>
 
                             <div className={cx('tippy-username')}>

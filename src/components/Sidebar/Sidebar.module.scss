@@ -24,6 +24,10 @@
         border-radius: 5px;
         background: rgba(0, 0, 0, 0.05);
     }
+
+    &.shrink {
+        width: 240px;
+    }
 }
 
 .tabs {

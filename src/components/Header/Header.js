@@ -2,6 +2,7 @@ import classNames from 'classnames/bind'
 import Tippy from '@tippyjs/react'
 import 'tippy.js/dist/tippy.css'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
 
 import config from '~/config'
 import styles from './Header.module.scss'
@@ -11,6 +12,7 @@ import Menu from '~/components/Menu'
 import { InboxIcon, MessageIcon, LanguageIcon, QuestionMarkIcon, KeyboardIcon, UserIcon, TikTokCoinIcon, GearIcon, LogOutIcon, PlusIcon, EllipsisVerticalIcon } from '~/components/Icons'
 import Image from '~/components/Image'
 import SearchInput from '~/components/SearchInput'
+import { ModalContext } from '~/components/ModalProvider'
 
 const cx = classNames.bind(styles)
 
@@ -43,8 +45,9 @@ const MENU_ITEMS = [
     }
 ]
 
-function Header({ onShow }) {
+function Header({ stretch }) {
     const currentUser = false
+    const context = useContext(ModalContext)
 
     const userMenu = [
         {
@@ -76,7 +79,7 @@ function Header({ onShow }) {
 
     return (
         <header className={cx('wrapper')}>
-            <div className={cx('inner')}>
+            <div className={cx('inner', { stretch: stretch })}>
                 <Link to={config.routes.home} className={cx('logo')}><img src={images.logo} alt="TikTok" /></Link>
 
                 <div><SearchInput /></div>
@@ -86,7 +89,7 @@ function Header({ onShow }) {
                     {currentUser ?
                         <Button to={config.routes.upload}><PlusIcon className={cx('upload-icon')} /> Upload</Button>
                         :
-                        <Button onClick={onShow}><PlusIcon className={cx('upload-icon')} /> Upload</Button>
+                        <Button onClick={context.handleShowModal}><PlusIcon className={cx('upload-icon')} /> Upload</Button>
                     }
 
                     {currentUser ? (
@@ -105,7 +108,7 @@ function Header({ onShow }) {
                         </>
                     ) : (
                         <>
-                            <Button primary onClick={onShow}>Log in</Button>
+                            <Button primary onClick={context.handleShowModal}>Log in</Button>
                         </>
                     )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
