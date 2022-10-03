@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '@fortawesome/free-regular-svg-icons'
@@ -129,29 +129,29 @@ function Sidebar({ shrink }) {
 
                 <div className={cx('footer')}>
                     <div className={cx('links-1')}>
-                        <Link to="/">About</Link>
-                        <Link to="/">TikTok </Link>
-                        <Link to="/">Newsroom</Link>
-                        <Link to="/">Contact</Link>
-                        <Link to="/">Careers</Link>
-                        <Link to="/">ByteDance</Link>
+                        <a href="https://www.tiktok.com/about?lang=en" target="blank">About</a>
+                        <a href="https://www.tiktok.com/browse" target="blank">TikTok Browse</a>
+                        <a href="https://newsroom.tiktok.com/" target="blank">Newsroom</a>
+                        <a href="https://www.tiktok.com/about/contact?lang=en" target="blank">Contact</a>
+                        <a href="https://careers.tiktok.com" target="blank">Careers</a>
+                        <a href="https://www.bytedance.com/" target="blank">ByteDance</a>
                     </div>
 
                     <div className={cx('links-2')}>
-                        <Link to="/">TikTok for Good</Link>
-                        <Link to="/">Advertise</Link>
-                        <Link to="/">Developers</Link>
-                        <Link to="/">Transparency</Link>
-                        <Link to="/">TikTok Rewards</Link>
+                        <a href="https://www.tiktok.com/forgood" target="blank">TikTok for Good</a>
+                        <a href="https://www.tiktok.com/business/?attr_medium=tt_official_site_guidance&amp;attr_source=tt_official_site&amp;refer=tiktok_web" target="blank">Advertise</a>
+                        <a href="https://developers.tiktok.com/?refer=tiktok_web" target="blank">Developers</a>
+                        <a href="https://www.tiktok.com/transparency?lang=en" target="blank">Transparency</a>
+                        <a href="https://www.tiktok.com/tiktok-rewards/en" target="blank">TikTok Rewards</a>
                     </div>
 
                     <div className={cx('links-3')}>
-                        <Link to="/">Help</Link>
-                        <Link to="/">Safety</Link>
-                        <Link to="/">Terms</Link>
-                        <Link to="/">Privacy</Link>
-                        <Link to="/">Creator Portal</Link>
-                        <Link to="/">Community Guidelines</Link>
+                        <a href="https://support.tiktok.com/en" target="blank">Help</a>
+                        <a href="https://www.tiktok.com/safety?lang=en" target="blank">Safety</a>
+                        <a href="https://www.tiktok.com/legal/terms-of-service?lang=en" target="blank">Terms</a>
+                        <a href="https://www.tiktok.com/legal/privacy-policy-row?lang=en" target="blank">Privacy</a>
+                        <a href="https://www.tiktok.com/creators/creator-portal/en-us/" target="blank">Creator Portal</a>
+                        <a href="https://www.tiktok.com/community-guidelines?lang=en" target="blank">Community Guidelines</a>
                     </div>
 
                     <span className={cx('copyright')}><FontAwesomeIcon icon={faCopyright} /> <p>{currentYear} TikTok</p></span>
