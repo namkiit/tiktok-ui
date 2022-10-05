@@ -23,6 +23,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
 
     useEffect(() => {
         videoRef.current.volume = volume
+        videoRef.current.focus()
     })
 
     const playVideo = () => {
