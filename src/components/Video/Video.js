@@ -23,13 +23,13 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
 
     useEffect(() => {
         videoRef.current.volume = volume
+        document.body.click()
     })
 
     const playVideo = () => {
         if (isPlaying === false) {
             videoRef.current.play()
             setIsPlaying(true)
-            videoRef.current.muted = false
         }
     }
 
@@ -139,7 +139,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
 
                 <div className={cx('video-wrapper')}>
                     <div className={cx('video-card')}>
-                        <video loop muted src={data?.file_url} ref={videoRef}></video>
+                        <video loop src={data?.file_url} ref={videoRef}></video>
 
                         <div className={cx('control-play')} onClick={togglePlayVideo}>
                             {isPlaying ? <PauseIcon /> : <PlaySolidIcon />}
