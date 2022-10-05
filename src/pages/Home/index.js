@@ -12,7 +12,7 @@ function Home() {
     const [page, setPage] = useState(1)
     const [volume, setVolume] = useState(0.4)
     const [prevVolume, setPrevVolume] = useState(volume)
-    const [mute, setMute] = useState(false)
+    const [mute, setMute] = useState(true)
 
     useEffect(() => {
         const fetchAPI = async () => {

@@ -22,7 +22,10 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
     const context = useContext(ModalContext)
 
     useEffect(() => {
-        videoRef.current.volume = volume
+        if (mute) {
+            videoRef.current.volume = 0
+        } else
+            videoRef.current.volume = volume
     })
 
     const playVideo = () => {
