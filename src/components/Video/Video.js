@@ -29,6 +29,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
         if (isPlaying === false) {
             videoRef.current.play()
             setIsPlaying(true)
+            videoRef.current.muted = false
         }
     }
 
@@ -138,8 +139,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
 
                 <div className={cx('video-wrapper')}>
                     <div className={cx('video-card')}>
-                        <iframe title="silence-audio" src="https://olafwempe.com/mp3/silence/silence.mp3" type="audio/mp3" allow="autoplay" style={{ display: 'none' }}></iframe>
-                        <video loop src={data?.file_url} ref={videoRef}></video>
+                        <video loop muted src={data?.file_url} ref={videoRef}></video>
 
                         <div className={cx('control-play')} onClick={togglePlayVideo}>
                             {isPlaying ? <PauseIcon /> : <PlaySolidIcon />}
