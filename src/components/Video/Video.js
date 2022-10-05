@@ -23,7 +23,6 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
 
     useEffect(() => {
         videoRef.current.volume = volume
-        videoRef.current.focus()
     })
 
     const playVideo = () => {
@@ -139,6 +138,7 @@ function Video({ data, mute, volume, adjustVolume, toggleMuted }) {
 
                 <div className={cx('video-wrapper')}>
                     <div className={cx('video-card')}>
+                        <iframe title="silence-audio" src="https://olafwempe.com/mp3/silence/silence.mp3" type="audio/mp3" allow="autoplay" style={{ display: 'none' }}></iframe>
                         <video loop src={data?.file_url} ref={videoRef}></video>
 
                         <div className={cx('control-play')} onClick={togglePlayVideo}>
