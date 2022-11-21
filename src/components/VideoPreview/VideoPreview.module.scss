@@ -1,6 +1,3 @@
-.container {
-}
-
 .inner {
     position: relative;
     width: 100%;
@@ -21,13 +18,26 @@
     width: 100%;
     height: 100%;
 
+    .image {
+        display: flex;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
     &:hover {
         .image {
             display: none;
         }
 
         .video {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }
@@ -36,8 +46,8 @@
     display: none;
 
     video {
-        width: 100%;
         height: 100%;
+        margin-top: -50%;
     }
 }
 

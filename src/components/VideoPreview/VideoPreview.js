@@ -3,7 +3,6 @@ import classNames from 'classnames/bind'
 
 import styles from './VideoPreview.module.scss'
 import { PlayIcon } from '~/components/Icons'
-import Image from '../Image'
 
 const cx = classNames.bind(styles)
 
@@ -17,8 +16,7 @@ function VideoPreview({ data }) {
                     <div className={cx('video-container')} onMouseEnter={() => videoRef.current.play()}>
                         <div className={cx('video-inner')}>
                             <div className={cx('image')}>
-                                <Image
-                                    src={data.thumb_url} />
+                                <img src={data.thumb_url} alt="" />
                             </div>
                             <div className={cx('video')}>
                                 <video muted ref={videoRef} src={data.file_url} />

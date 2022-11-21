@@ -154,7 +154,7 @@ function Sidebar({ shrink }) {
                         <a href="https://www.tiktok.com/community-guidelines?lang=en" target="blank">Community Guidelines</a>
                     </div>
 
-                    <span className={cx('copyright')}><FontAwesomeIcon icon={faCopyright} /> <p>{currentYear} TikTok</p></span>
+                    <span className={cx('copyright')}><FontAwesomeIcon icon={faCopyright} /> <p>{currentYear} TikTok - Made by namkiit</p></span>
                 </div>
             </div>
         </div>
